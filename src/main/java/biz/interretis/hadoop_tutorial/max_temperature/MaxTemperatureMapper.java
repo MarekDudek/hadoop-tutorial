@@ -33,6 +33,6 @@ public class MaxTemperatureMapper extends Mapper<LongWritable, Text, Text, IntWr
         } else {
             substring = line.substring(87, 92);
         }
-        return  Integer.parseInt(substring);
+        return Integer.parseInt(substring);
     }
 }

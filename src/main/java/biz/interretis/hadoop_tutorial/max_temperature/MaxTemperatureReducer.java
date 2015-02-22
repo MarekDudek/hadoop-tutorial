@@ -13,7 +13,7 @@ public class MaxTemperatureReducer extends Reducer<Text, IntWritable, Text, IntW
 
         int maxValue = Integer.MIN_VALUE;
 
-        for (IntWritable value: values) {
+        for (IntWritable value : values) {
             final int unpacked = value.get();
             maxValue = Math.max(maxValue, unpacked);
         }

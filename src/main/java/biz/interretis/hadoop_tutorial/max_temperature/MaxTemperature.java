@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class MaxTemperature {
 
-    public static void main(final String ...args   ) throws Exception {
+    public static void main(final String... args) throws Exception {
 
         if (args.length != 2) {
             System.err.println("Usage MaxTemperature <input path> <output path>");
@@ -23,6 +23,9 @@ public class MaxTemperature {
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+        job.setMapperClass(MaxTemperatureMapper.class);
+        job.setReducerClass(MaxTemperatureReducer.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
