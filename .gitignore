@@ -1,0 +1,7 @@
+# IntelliJ Idea specific
+
+/.idea
+*.iml
+
+# Maven specific
+/target
