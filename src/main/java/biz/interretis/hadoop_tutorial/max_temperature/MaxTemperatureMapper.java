@@ -16,21 +16,42 @@ public class MaxTemperatureMapper extends Mapper<LongWritable, Text, Text, IntWr
 
         final String line = value.toString();
 
-        final String year = line.substring(15, 19);
-        final int airTemperature = Integer.parseInt(airTemperature(line));
-        final String quality = line.substring(92, 93);
+        final String year = WeatherRecord.YEAR.stringValue(line);
+        final int airTemperature = WeatherRecord.AIR_TEMPERATURE.integerValue(line);
+        final String quality = WeatherRecord.QUALITY.stringValue(line);
 
         if (airTemperature != MISSING && quality.matches("[01459]")) {
             context.write(new Text(year), new IntWritable(airTemperature));
         }
     }
 
-    private String airTemperature(final String line) {
+    private enum WeatherRecord {
 
-        if (line.charAt(87) == '+') {
-            return line.substring(88, 92);
-        } else {
-            return line.substring(87, 92);
+        YEAR(15, 4),
+        AIR_TEMPERATURE(87, 5),
+        QUALITY(92, 1);
+
+        private final int start;
+        private final int length;
+
+        private WeatherRecord(final int start, final int length) {
+            this.start = start;
+            this.length = length;
+        }
+
+        public String stringValue(final String line) {
+            return line.substring(start, start + length);
+        }
+
+        public int integerValue(final String line) {
+            int digitsBegin;
+            if (line.charAt(start) == '+') {
+                digitsBegin = start + 1;
+            } else {
+                digitsBegin = start;
+            }
+            final String number = line.substring(digitsBegin, start + length);
+            return Integer.parseInt(number);
         }
     }
 }

@@ -11,14 +11,14 @@ public class MaxTemperatureReducer extends Reducer<Text, IntWritable, Text, IntW
     @Override
     protected void reduce(final Text key, final Iterable<IntWritable> values, final Context context) throws IOException, InterruptedException {
 
-        int maxValue = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
 
         for (IntWritable value : values) {
             final int unpacked = value.get();
-            maxValue = Math.max(maxValue, unpacked);
+            max = Math.max(max, unpacked);
         }
 
-        final IntWritable result = new IntWritable(maxValue);
+        final IntWritable result = new IntWritable(max);
 
         context.write(key, result);
     }
