@@ -16,7 +16,7 @@ public class MaxTemperature {
             System.exit(-1);
         }
 
-        Job job = new Job();
+        final Job job = new Job();
 
         job.setJarByClass(MaxTemperature.class);
         job.setJobName("Max temperature");
