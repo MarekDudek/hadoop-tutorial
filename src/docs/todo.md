@@ -4,7 +4,7 @@ To Do List
 
 # Map reduce:
 
-* MaxTemperature with Combinator
+* -MaxTemperature with Combinator-
 * MaxTemperature with old API, with Combinator if available
 * Processing multiple files with MaxTemperature
 * WordCount with old and new API, with Combinator

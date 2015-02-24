@@ -6,13 +6,18 @@ hadoop fs -ls /user/
 
 # Creating directories
 hadoop fs -mkdir /user/marek/
+
 hadoop fs -mkdir /user/marek/max-temperature
 
+hadoop fs -mkdir /user/marek/word-count
+hadoop fs -mkdir /user/marek/word-count/input
+hadoop fs -mkdir /user/marek/word-count/output
 
 # Copying data from local file system to HDSF
 hadoop fs -copyFromLocal ./src/main/resources/1901 hdfs:///user/marek/max-temperature
 hadoop fs -copyFromLocal ./src/main/resources/1902 hdfs:///user/marek/max-temperature
 
+hadoop fs -copyFromLocal ./src/main/resources/word-count/gettysburg-address.txt hdfs:///user/marek/word-count/input
 
 # Checking data
 hadoop fs -ls /user/marek/max-temperature
