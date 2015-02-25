@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for year in ./src/main/resources/*.gz
+for year in ./src/main/resources/max-temperature/*.gz
 do
     echo -ne `basename $year .gz`"\t"
     gunzip -c $year | \

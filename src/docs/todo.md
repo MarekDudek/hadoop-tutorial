@@ -6,7 +6,7 @@ To Do List
 
 * -MaxTemperature with Combinator-
 * MaxTemperature with old API, with Combinator if available
-* Processing multiple files with MaxTemperature and WordCount
+* -Processing multiple files with MaxTemperature and WordCount-
 * -WordCount with old and new API, with Combinator-
 * Both examples with bash and with Hadoop and Python, streaming?
 * Both examples in Java 8 with Lambdas
