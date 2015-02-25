@@ -41,7 +41,7 @@ public class WordCountOldAPI {
                 final IntWritable value = values.next();
                 sum += value.get();
             }
-            
+
             output.collect(key, new IntWritable(sum));
         }
     }
