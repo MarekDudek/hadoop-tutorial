@@ -1,4 +1,4 @@
-package biz.interretis.hadoop_tutorial.word_count;
+package biz.interretis.hadoop_tutorial.word_count.new_api;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
