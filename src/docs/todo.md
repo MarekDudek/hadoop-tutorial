@@ -13,3 +13,4 @@ To Do List
 * Both examples in Haskell
 * Tests: MRTest? other kinds of tests
 * CS's transaction analyser example with Hadoop
+* Local run: local filesystem with local job runner - in standalone mode
