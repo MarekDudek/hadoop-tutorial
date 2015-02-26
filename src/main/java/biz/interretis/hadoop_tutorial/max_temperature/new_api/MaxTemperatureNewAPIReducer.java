@@ -19,7 +19,6 @@ public class MaxTemperatureNewAPIReducer extends Reducer<Text, IntWritable, Text
         }
 
         final IntWritable result = new IntWritable(max);
-
         context.write(key, result);
     }
 }
