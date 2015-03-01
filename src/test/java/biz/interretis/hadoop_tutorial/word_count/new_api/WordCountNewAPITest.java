@@ -10,9 +10,11 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertThat;
 
 public class WordCountNewAPITest {
+
 
     // Systems under test
     private WordCountNewAPI.WordCountMapper mapper;
@@ -21,11 +23,16 @@ public class WordCountNewAPITest {
     // Test infrastructure
     private MapDriver<Text, Text, Text, IntWritable> mapDriver;
     private ReduceDriver<Text, IntWritable, Text, IntWritable> reduceDriver;
-
     private MapReduceDriver<Text, Text, Text, IntWritable, Text, IntWritable> mapReduceDriver;
 
     // Values
     private static final Text IGNORED_KEY = new Text("ignored");
+
+    public static final IntWritable COUNT_ONE = new IntWritable(1);
+
+    public static final Text ONE = new Text("one");
+    public static final Text TWO = new Text("two");
+    public static final Text THREE = new Text("three");
 
     @Before
     public void setUp() {
@@ -46,14 +53,35 @@ public class WordCountNewAPITest {
         // given
         mapDriver.withInput(IGNORED_KEY, new Text("one one two one two three"));
 
-        mapDriver.withOutput(new Text("one"), new IntWritable(1));
-        mapDriver.withOutput(new Text("one"), new IntWritable(1));
-        mapDriver.withOutput(new Text("two"), new IntWritable(1));
-        mapDriver.withOutput(new Text("one"), new IntWritable(1));
-        mapDriver.withOutput(new Text("two"), new IntWritable(1));
-        mapDriver.withOutput(new Text("three"), new IntWritable(1));
+        // then
+        mapDriver.withOutput(ONE, COUNT_ONE);
+
+        mapDriver.withOutput(ONE, COUNT_ONE);
+        mapDriver.withOutput(TWO, COUNT_ONE);
+
+        mapDriver.withOutput(ONE, COUNT_ONE);
+        mapDriver.withOutput(TWO, COUNT_ONE);
+        mapDriver.withOutput(THREE, COUNT_ONE);
 
         // when
         mapDriver.runTest();
+    }
+
+    @Test
+    public void testReducer() throws IOException {
+
+        // given
+        reduceDriver.withInput(ONE, newArrayList(COUNT_ONE, COUNT_ONE, COUNT_ONE));
+        reduceDriver.withInput(TWO, newArrayList(COUNT_ONE, COUNT_ONE));
+        reduceDriver.withInput(THREE, newArrayList(COUNT_ONE));
+
+
+        // then
+        reduceDriver.withOutput(ONE, new IntWritable(3));
+        reduceDriver.withOutput(TWO, new IntWritable(2));
+        reduceDriver.withOutput(THREE, new IntWritable(1));
+
+        // when
+        reduceDriver.runTest();
     }
 }
