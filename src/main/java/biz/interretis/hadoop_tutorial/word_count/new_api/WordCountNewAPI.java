@@ -16,14 +16,14 @@ import java.util.StringTokenizer;
 
 public class WordCountNewAPI {
 
-    public static class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
+    public static class WordCountMapper extends Mapper<Text, Text, Text, IntWritable> {
 
         private final static IntWritable ONE = new IntWritable(1);
 
         private final Text word = new Text();
 
         @Override
-        protected void map(final Object key, final Text value, final Context context) throws IOException, InterruptedException {
+        protected void map(final Text key, final Text value, final Context context) throws IOException, InterruptedException {
 
             final StringTokenizer tokenizer = new StringTokenizer(value.toString());
 
