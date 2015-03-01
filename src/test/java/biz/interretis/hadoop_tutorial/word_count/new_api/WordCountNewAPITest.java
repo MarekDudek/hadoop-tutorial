@@ -11,7 +11,6 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static org.junit.Assert.assertThat;
 
 public class WordCountNewAPITest {
 
@@ -83,5 +82,20 @@ public class WordCountNewAPITest {
 
         // when
         reduceDriver.runTest();
+    }
+
+    @Test
+    public void testJob() throws IOException {
+
+        // given
+        mapReduceDriver.withInput(IGNORED_KEY, new Text("one one two one two three"));
+
+        // then
+        mapReduceDriver.withOutput(ONE, new IntWritable(3));
+        mapReduceDriver.withOutput(THREE, new IntWritable(1));
+        mapReduceDriver.withOutput(TWO, new IntWritable(2));
+
+        // when
+        mapReduceDriver.runTest();
     }
 }
