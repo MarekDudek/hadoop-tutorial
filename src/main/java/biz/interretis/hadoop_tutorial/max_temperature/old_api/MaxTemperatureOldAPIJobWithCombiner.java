@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class MaxTemperatureOldAPIJobWithCombiner {
 
-    public static void main(final String ...args) throws IOException {
+    public static void main(final String... args) throws IOException {
 
         final JobConf config = new JobConf(MaxTemperatureOldAPIJobWithCombiner.class);
         config.setJobName("Max temperature - Old API");

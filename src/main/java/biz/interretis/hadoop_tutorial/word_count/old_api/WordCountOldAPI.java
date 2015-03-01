@@ -17,7 +17,7 @@ public class WordCountOldAPI {
         private final static IntWritable ONE = new IntWritable(1);
 
         private final Text word = new Text();
-        
+
         @Override
         public void map(final LongWritable key, final Text value, final OutputCollector<Text, IntWritable> output, final Reporter reporter) throws IOException {
 
@@ -46,7 +46,7 @@ public class WordCountOldAPI {
         }
     }
 
-    public static void main(final String ...args) throws IOException {
+    public static void main(final String... args) throws IOException {
 
         final JobConf config = new JobConf(WordCountOldAPI.class);
         config.setJobName("WordCount old API");
