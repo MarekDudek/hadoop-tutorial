@@ -3,6 +3,8 @@
 PREFIX=./src/main/scripts
 
 $PREFIX/max-temperature/max-temperature-bash-awk.sh && \
+$PREFIX/max-temperature/max-temperature-python.sh && \
+
 $PREFIX/max-temperature/max-temperature-new-api-job.sh && \
 $PREFIX/max-temperature/max-temperature-new-api-job-with-combiner.sh && \
 
