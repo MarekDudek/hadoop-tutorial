@@ -2,6 +2,11 @@
 To Do List
 ==========
 
+# Global
+
+* ~~Find where it is installed~~
+* ~~Find where configuration is~~
+
 # Map reduce:
 
 * ~~MaxTemperature with Combinator~~
@@ -16,3 +21,9 @@ To Do List
 * CS's transaction analyser example with Hadoop
 * Local run: local filesystem with local job runner - in standalone mode
 * Tests with MiniDFS, MiniYARN, MiniMR
+
+# HDFS
+
+* Find where data is actually stored
+* How to restart cluster? How to restart HDFS?
+* Change replication factor, restart and check if files got replicated
