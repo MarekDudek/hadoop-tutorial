@@ -1,6 +1,7 @@
 package biz.interretis.hadoop_tutorial.word_count.new_api;
 
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mrunit.mapreduce.MapDriver;
 import org.apache.hadoop.mrunit.mapreduce.MapReduceDriver;
@@ -20,12 +21,12 @@ public class WordCountNewAPITest {
     private WordCountNewAPI.WordCountReducer reducer;
 
     // Test infrastructure
-    private MapDriver<Text, Text, Text, IntWritable> mapDriver;
+    private MapDriver<LongWritable, Text, Text, IntWritable> mapDriver;
     private ReduceDriver<Text, IntWritable, Text, IntWritable> reduceDriver;
-    private MapReduceDriver<Text, Text, Text, IntWritable, Text, IntWritable> mapReduceDriver;
+    private MapReduceDriver<LongWritable, Text, Text, IntWritable, Text, IntWritable> mapReduceDriver;
 
     // Values
-    private static final Text IGNORED_KEY = new Text("ignored");
+    private static final LongWritable IGNORED_KEY = new LongWritable(0);
 
     public static final IntWritable COUNT_ONE = new IntWritable(1);
 

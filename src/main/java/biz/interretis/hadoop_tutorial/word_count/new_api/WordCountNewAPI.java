@@ -3,6 +3,7 @@ package biz.interretis.hadoop_tutorial.word_count.new_api;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -16,14 +17,14 @@ import java.util.StringTokenizer;
 
 public class WordCountNewAPI {
 
-    public static class WordCountMapper extends Mapper<Text, Text, Text, IntWritable> {
+    public static class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         private final static IntWritable ONE = new IntWritable(1);
 
         private final Text word = new Text();
 
         @Override
-        protected void map(final Text key, final Text value, final Context context) throws IOException, InterruptedException {
+        protected void map(final LongWritable key, final Text value, final Context context) throws IOException, InterruptedException {
 
             final StringTokenizer tokenizer = new StringTokenizer(value.toString());
 
