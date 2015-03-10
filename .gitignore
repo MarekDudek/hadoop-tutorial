@@ -20,3 +20,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 >>>>>>> 118bda5d005e50f3a06ba7daf1d1191674716a9e
+
+# Pig error logs
+pig_*.log
