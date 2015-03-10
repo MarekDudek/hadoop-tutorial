@@ -27,3 +27,16 @@ To Do List
 * Find where data is actually stored
 * How to restart cluster? How to restart HDFS?
 * Change replication factor, restart and check if files got replicated
+
+
+# Pig
+
+* Number of counties
+* Number of counties per state
+* Number of counties per state ordered
+* Total population of US
+* Total area of US
+* Both total population and area of US
+* Population per state
+* Area per state
+* Both population and area per state

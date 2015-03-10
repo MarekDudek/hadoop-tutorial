@@ -8,8 +8,16 @@ data_with_header = LOAD 'src/main/resources/us-census/counties.csv'
     ;
 
 data = FILTER data_with_header BY county != 'County';
-DUMP data;
+--DUMP data;
+
+grouped_all = GROUP data ALL;
+
+DUMP grouped_all;
+
+total_population = FOREACH grouped_all GENERATE SUM(data.population);
+STORE total_population INTO 'target/output/total-population';
 
 counties = FOREACH data GENERATE county, state;
+STORE counties INTO 'target/output/counties';
 
-STORE counties INTO 'target/output';
+
