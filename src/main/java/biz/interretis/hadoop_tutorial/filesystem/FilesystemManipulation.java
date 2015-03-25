@@ -18,6 +18,10 @@ import java.util.List;
 
 public class FilesystemManipulation {
 
+    static {
+        URL.setURLStreamHandlerFactory(new FsUrlStreamHandlerFactory());
+    }
+
     public static class FileSystemMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
 
         @Override
@@ -25,14 +29,12 @@ public class FilesystemManipulation {
 
             super.setup(context);
 
-            URL.setURLStreamHandlerFactory(new FsUrlStreamHandlerFactory());
             printLines();
         }
     }
 
     public static void main(final String... args) throws IOException, ClassNotFoundException, InterruptedException {
 
-        URL.setURLStreamHandlerFactory(new FsUrlStreamHandlerFactory());
         printLines();
 
         final Configuration config = new Configuration();
